@@ -1,7 +1,7 @@
 # Created by http://gitignore.io
 
 ### Project ###
-
+/heroku.config
 
 ### Python ###
 *.py[cod]
