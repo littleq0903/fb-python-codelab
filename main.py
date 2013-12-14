@@ -33,12 +33,9 @@ def login():
 @app.route('/cp1')
 def cp1():
     cookies = request.cookies
-    print cookies
-    fb_user = facebook.get_user_from_cookie(cookies, FACEBOOK_APP_ID, FACEBOOK_SECRET)
-
-    fb_access_token = fb_user["access_token"]
+    fb_access_token = cookies["fb_access_token"]
     fb_graph = facebook.GraphAPI(fb_access_token)
-    profile = graph.get_object("me")
+    profile = fb_graph.get_object("me")
 
     return json.dumps(profile)
     
