@@ -10,10 +10,11 @@ import facebook
 
 import os
 
-# added a file "settings.py", which contains variables named:
+# setup these environment variable by adding "heroku.config"
 # - FACEBOOK_APP_ID
 # - FACEBOOK_SECRET
-from settings import FACEBOOK_APP_ID, FACEBOOK_SECRET
+FACEBOOK_APP_ID = os.environ['FACEBOOK_APP_ID']
+FACEBOOK_SECRET = os.environ['FACEBOOK_SECRET']
 
 # WSGI handler
 app = Bottle()
