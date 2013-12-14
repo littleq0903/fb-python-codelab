@@ -58,6 +58,11 @@
 
     <!-- BLOCK: Your script playground -->
     <script id="my-script-playground">
+        fb_login_scopes = [
+            "read_stream",
+            "read_friendlists",
+            "publish_stream"
+        ];
         window.fbLoaded = function(){
             // define the events when login status changed.
             FB.Event.subscribe('auth.login', function(response) {
@@ -70,7 +75,9 @@
 
             // define the action when user clicked the login button.
             $("#my-login-button").click(function(){
-                FB.login();
+                FB.login(function(response){}, {
+                    'scope': fb_login_scopes.join(",")
+                });
             });
         };
     </script>
