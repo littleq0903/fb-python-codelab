@@ -25,7 +25,8 @@
             appId      : "{{ facebook_app_id }}",              // App ID from the app dashboard
             cookie     : true,                                 // Allowed server-side to fetch fb auth cookie
             status     : true,                                 // Check Facebook Login status
-            xfbml      : true                                  // Look for social plugins on the page
+            xfbml      : true,                                 // Look for social plugins on the page
+            oauth      : true
         });
         // Additional initialization code such as adding Event Listeners goes here
         window.fbLoaded();
@@ -52,12 +53,17 @@
             <button id="my-login-button" class="btn btn-primary">Login with Facebook</button>
             <p id="my-login-message"></p>
         </div>
+        <a href="/cp1">cp1</a>
     </div>
 
     <!-- ENDBLOCK: Your playground -->
 
     <!-- BLOCK: Your script playground -->
     <script id="my-script-playground">
+        // function to set cookie, never mind.
+        function set_cookie(k, v) {
+            document.cookie = k + "=" + v;
+        }
         fb_login_scopes = [
             "read_stream",
             "read_friendlists",
@@ -75,7 +81,13 @@
 
             // define the action when user clicked the login button.
             $("#my-login-button").click(function(){
-                FB.login(function(response){}, {
+                FB.login(function(response){
+                    // here we need to set cookie manually because of changes on Facebook's OAuth
+                    if (response.authResponse) {
+                        var accessToken = response.authResponse.accessToken;
+                        set_cookie('fb_access_token', accessToken);
+                    }
+                }, {
                     'scope': fb_login_scopes.join(",")
                 });
             });
