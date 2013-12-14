@@ -1,8 +1,7 @@
 # Created by http://gitignore.io
 
 ### Project ###
-/your_secret.js
-/settings.py
+
 
 ### Python ###
 *.py[cod]
