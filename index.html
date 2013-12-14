@@ -4,19 +4,16 @@
     <!--
     Facebook Code Example
     @author: LittleQ <littleq0903@gmail.com>
-    @date: 2013-11-23
+    @date: 2013-12-15
     -->
     <meta charset="UTF-8">
     <title>FB API EXAMPLE</title>
 
     <!-- BLOCK: Loading libraries -->
-    <script src="./your_secret.js"></script>
-    <script src="../your_secret.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <!-- ENDBLOCK: Loading libraries -->
-
 </head>
 <body>
     <!-- BLOCK: FB SDK initialization -->
@@ -25,12 +22,11 @@
     window.fbAsyncInit = function() {
         // init the FB JS SDK
         FB.init({
-        appId      : FacebookAppId,                        // App ID from the app dashboard
-        cookie     : true,                                 // Allowed server-side to fetch fb auth cookie
-        status     : true,                                 // Check Facebook Login status
-        xfbml      : true                                  // Look for social plugins on the page
+            appId      : "{{ facebook_app_id }}",              // App ID from the app dashboard
+            cookie     : true,                                 // Allowed server-side to fetch fb auth cookie
+            status     : true,                                 // Check Facebook Login status
+            xfbml      : true                                  // Look for social plugins on the page
         });
-
         // Additional initialization code such as adding Event Listeners goes here
         window.fbLoaded();
     };
@@ -54,7 +50,6 @@
     <div id="my-html-playground" class="container">
         <div id="my-login-control" class="well">
             <button id="my-login-button" class="btn btn-primary">Login with Facebook</button>
-            <button id="my-logout-button" class="btn btn-danger">Logout from Facebook</button>
             <p id="my-login-message"></p>
         </div>
     </div>
@@ -76,10 +71,6 @@
             // define the action when user clicked the login button.
             $("#my-login-button").click(function(){
                 FB.login();
-            });
-
-            $("#my-logout-button").click(function(){
-                FB.logout();
             });
         };
     </script>
