@@ -33,9 +33,23 @@ def login():
 @app.route('/cp1')
 def cp1():
     cookies = request.cookies
-    fb_access_token = cookies["fb_access_token"]
+    fb_access_token = cookies['fb_access_token']
+
     fb_graph = facebook.GraphAPI(fb_access_token)
     profile = fb_graph.get_object("me")
 
     return json.dumps(profile)
     
+# Checkpoint 2
+@app.route('/cp2')
+def cp2():
+    """
+    Get friend list of me via FQL
+    """
+    query = "SELECT uid1,uid2 FROM friend WHERE uid1 = me()"
+    fb_access_token = request.cookies['fb_access_token']
+
+    fb_graph = facebook.GraphAPI(fb_access_token)
+    result = fb_graph.fql(query)
+
+    return json.dumps(result)

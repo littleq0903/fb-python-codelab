@@ -2,6 +2,7 @@
 
 ### Project ###
 /heroku.config
+/heroku.local.config
 
 ### Python ###
 *.py[cod]
