@@ -3,7 +3,7 @@
 # Author: LittleQ <littleq0903@gmail.com>
 
 TARGET=build
-BRANCHES="cp0 cp1 cp2 cp3 cp4"
+BRANCHES="cp0 cp1 cp2"
 
 mkdir -p ${TARGET}
 
