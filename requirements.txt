@@ -1,4 +1,4 @@
 bottle
 jinja2
 gunicorn
-facebook-sdk
+git+https://github.com/pythonforfacebook/facebook-sdk.git#egg=facebook
